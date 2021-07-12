@@ -12,7 +12,11 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: 'Trang chủ' }}
+        />
         <Stack.Screen name="Register" component={RegisterScreen} />
       </Stack.Navigator>
     </NavigationContainer>
@@ -20,5 +24,5 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  
+
 })

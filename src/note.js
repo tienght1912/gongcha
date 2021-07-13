@@ -78,7 +78,7 @@ alignSelf
   paddingTop
   paddingVertical
   placeholder
-  placeholderColor
+  placeholderTextColor
   position
   resizeMode
   right

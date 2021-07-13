@@ -19,8 +19,8 @@ export default function Login({ navigation }) {
                         color="#2d3436"
                     />
                     <TextInput
-                        placeholder='Your Mail'
-                        placeholderColor="#000"
+                        placeholder="Your Username"
+                        placeholderTextColor="#666666"
                         style={styles.inputEmail}
                     />
                 </View>

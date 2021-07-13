@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
         borderColor: "#000"
     },
     btnLogin: {
+        flexDirection:"row",
         width: 140,
         height: 40,
         backgroundColor: "#e17055",
@@ -91,6 +92,7 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     txtButton: {
-        color: "#fff"
+        color: "#fff",
+        fontSize:16
     }
 })

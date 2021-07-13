@@ -37,7 +37,7 @@ alignSelf
   end
   flex
   flexBasis
-  flexDirecti
+  flexDirection
   flexGrow
   flexShrink
   flexWrap

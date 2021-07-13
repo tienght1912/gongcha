@@ -7,7 +7,9 @@ import {
     TouchableOpacity,
     TextInput,
     StatusBar,
-    Alert
+    Alert,
+    Image,
+    ImageBackground 
 } from 'react-native';
 // import Home from './Home';
 import * as Animatable from 'react-native-animatable';
@@ -53,8 +55,14 @@ export default function Login({ navigation }) {
     }
     return (
         <View style={styles.container}>
+            <StatusBar backgroundColor='#1b262c' barStyle="light-content" />
             <View style={styles.header}>
-                <Text style={styles.titleHeader}>Welcome!</Text>
+                <ImageBackground
+                    source={require('../assets/banner.png')}
+                    style={styles.banner}
+                >
+                    <Text style={styles.titleHeader}>Welcome!</Text>
+                </ImageBackground>
             </View>
             <View style={styles.footer}>
                 {/* email */}
@@ -124,12 +132,20 @@ export default function Login({ navigation }) {
                         style={styles.btnSignIn}
                         onPress={() => navigation.navigate('Home')}
                     >
-                        <Text style={styles.textSign}>Sign in</Text>
-                        <MaterialIcons
+
+                        <Text style={styles.textSignIn}>Sign In</Text>
+                        {/* <MaterialIcons
                             name="navigate-next"
                             color="#fff"
                             size={20}
-                        />
+                        /> */}
+
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={()=>navigation.navigate('Register')}
+                        style={styles.btnSignUp}
+                    >
+                        <Text style={styles.textSignUp}>Sign Up</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -144,15 +160,23 @@ const styles = StyleSheet.create({
     },
     header: {
         flex: 1,
+        flexDirection:"row",
         backgroundColor: "#1b262c",
-        justifyContent: "center",
-        padding: 20
-        // alignItems:"center",
+        // justifyContent: "center",
+        // alignItems:"center"
+    },
+    banner:{
+        width:"100%",
+        height:"100%",
+        flex:2,
     },
     titleHeader: {
         color: "#fff",
-        fontSize: 32,
+        fontSize: 24,
         fontWeight: "700",
+        flex:1,
+        marginTop:80,
+        marginLeft:20,
     },
     footer: {
         flex: 2,
@@ -185,20 +209,36 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: "#000"
     },
-    button:{
+    button: {
         alignItems: 'center',
         marginTop: 50,
-        flexDirection:"column"
-    },  
-    btnSignIn: {
-        height: 50,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 10,
-        backgroundColor:"#1b262c"
     },
-    textSign: {
+    btnSignIn: {
+        width: "100%",
+        height: 50,
+        borderRadius: 10,
+        backgroundColor:"#1b262c",
+        alignItems:"center",
+        justifyContent:"center"
+    },
+    textSignIn: {
         color: "#fff",
-        fontSize: 18
-    }
+        fontSize: 18,
+        fontWeight: "bold"
+    },
+    btnSignUp:{
+        marginTop:15,
+        borderColor:"#1b262c",
+        borderWidth:1,
+        borderRadius:10,
+        width:"100%",
+        height:50,
+        justifyContent:"center",
+        alignItems:"center"
+    },
+    textSignUp: {
+        color: "#1b262c",
+        fontSize: 18,
+        fontWeight: "bold"
+    },
 })

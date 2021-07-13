@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
 import Home from './Home';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default function Login({ navigation }) {
     return (
@@ -9,18 +10,20 @@ export default function Login({ navigation }) {
             <View style={styles.header}>
                 <Text style={styles.titleHeader}>Welcome!</Text>
             </View>
-            <View style={styles.footer}>
-                <TextInput
-                    style={styles.inputEmail}
-                    placeholder="Your Email"
-                // value={text}
-                />
-                <TextInput
-                    style={styles.inputPass}
-                    placeholder="Your Password"
-                    placeholderColor="#000"
-                // value={password}
-                />
+            <View style={styles.footer}>   
+                <Text style={styles.text_footer}>Email</Text> 
+                <View style={styles.action}>
+                    <FontAwesome
+                        name="user"
+                        size={20}
+                        color="#2d3436"
+                    />
+                    <TextInput
+                        placeholder='Your Mail'
+                        placeholderColor="#000"
+                        style={styles.inputEmail}
+                    />
+                </View>
                 <TouchableOpacity
                     style={styles.btnLogin}
                     onPress={() => navigation.navigate('Home')}
@@ -57,8 +60,8 @@ const styles = StyleSheet.create({
     footer: {
         flex: 2,
         backgroundColor: "#fff",
-        justifyContent: "center",
-        alignItems: "center",
+        // justifyContent: "center",
+        // alignItems: "center",
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
         padding: 20,
@@ -66,13 +69,13 @@ const styles = StyleSheet.create({
     inputEmail: {
         height: 40,
         width: "100%",
-        margin: 12,
         borderWidth: 1,
+        color:"#000",
+        
     },
     inputPass: {
         height: 40,
         width: "100%",
-        margin: 12,
         borderWidth: 1,
     },
     formUserName: {

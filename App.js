@@ -6,28 +6,30 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/screens/Home';
 import LoginScreen from './src/screens/Login';
 import RegisterScreen from './src/screens/Register';
+import MyDrawer from './src/components/MyDrawer';
 
 const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator headerMode='none'>
-        <Stack.Screen 
-        name="Login" 
-        component={LoginScreen} 
-        // options={{ headerShown: false }}
-        />
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          // options={{ headerShown: false }}
+        // options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+        // options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Register"
           component={RegisterScreen}
-          // options={{ headerShown: false }}
+        // options={{ headerShown: false }}
         />
       </Stack.Navigator>
+      <MyDrawer />
     </NavigationContainer>
   )
 }

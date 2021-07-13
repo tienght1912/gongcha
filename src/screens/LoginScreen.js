@@ -13,7 +13,6 @@ import {
 } from 'react-native';
 // import Home from './Home';
 // import * as Animatable from 'react-native-animatable';
-// import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 // import LinearGradient from 'react-native-linear-gradient';

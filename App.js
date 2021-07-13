@@ -11,21 +11,21 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator headerMode='none'>
         <Stack.Screen 
         name="Login" 
         component={LoginScreen} 
-        options={{ headerShown: false }}
+        // options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ headerShown: false }}
+          // options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Register"
           component={RegisterScreen}
-          options={{ headerShown: false }}
+          // options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

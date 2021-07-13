@@ -1,17 +1,64 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
-import Home from './Home';
+import {
+    StyleSheet,
+    Text,
+    View,
+    Platform,
+    TouchableOpacity,
+    TextInput,
+    StatusBar,
+    Alert
+} from 'react-native';
+// import Home from './Home';
+import * as Animatable from 'react-native-animatable';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Feather from 'react-native-vector-icons/Feather';
+import LinearGradient from 'react-native-linear-gradient';
 
 export default function Login({ navigation }) {
+    const [data, setdata] = React.useState({
+        email: '',
+        password: '',
+        check_textInputChange: false,
+        secureTextEntry: true
+    });
+    const textInputChange = (val) => {
+        if (val.trim().length >= 5) {
+            setdata({
+                ...data,
+                email: val,
+                check_textInputChange: true,
+            });
+        } else {
+            setdata({
+                ...data,
+                email: val,
+                check_textInputChange: false,
+            });
+        }
+    }
+    const handlePasswordChange = (val) => {
+        setdata({
+            ...data,
+            password: val,
+        });
+    }
+    const updatesecureTextEntry = () => {
+        setdata({
+            ...data,
+            secureTextEntry: !data.secureTextEntry
+
+        })
+    }
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <Text style={styles.titleHeader}>Welcome!</Text>
             </View>
-            <View style={styles.footer}>   
-                <Text style={styles.text_footer}>Email</Text> 
+            <View style={styles.footer}>
+                {/* email */}
+                <Text style={styles.text_footer}>Email</Text>
                 <View style={styles.action}>
                     <FontAwesome
                         name="user"
@@ -19,22 +66,72 @@ export default function Login({ navigation }) {
                         color="#2d3436"
                     />
                     <TextInput
-                        placeholder="Your Username"
+                        placeholder="Your Email"
                         placeholderTextColor="#666666"
-                        style={styles.inputEmail}
+                        style={styles.input}
+                        onChangeText={(val) => textInputChange(val)}
+                        autoCapitalize="none"
                     />
+                    {data.check_textInputChange ?
+                        <Feather
+                            name="check-circle"
+                            size={18}
+                            color="green"
+                        // #fdcb6e
+                        />
+                        : null}
                 </View>
-                <TouchableOpacity
-                    style={styles.btnLogin}
-                    onPress={() => navigation.navigate('Home')}
-                >
-                    <Text style={styles.txtButton}>Sign in</Text>
-                    <MaterialIcons
-                        name="navigate-next"
-                        color="#fff"
+                {/* email */}
+                {/* password */}
+                <Text style={[styles.text_footer, { marginTop: 35 }]}>Password</Text>
+                <View style={styles.action}>
+                    <FontAwesome
+                        name="lock"
                         size={20}
+                        color="#2d3436"
                     />
-                </TouchableOpacity>
+                    <TextInput
+                        placeholder="Your Password"
+                        placeholderTextColor="#666666"
+                        secureTextEntry={!data.secureTextEntry ? false : true}
+                        onChangeText={(val) => handlePasswordChange(val)}
+                        style={styles.input}
+                        autoCapitalize="none"
+                    />
+                    <TouchableOpacity
+                        onPress={updatesecureTextEntry}
+                    >
+                        {data.secureTextEntry ?
+                            <Feather
+                                name="eye-off"
+                                size={18}
+                                color="grey"
+                            // #fdcb6e
+                            />
+                            :
+                            <Feather
+                                name="eye"
+                                size={18}
+                                color="grey"
+                            // #fdcb6e
+                            />
+                        }
+                    </TouchableOpacity>
+                </View>
+                {/* password */}
+                <View style={styles.button}>
+                    <TouchableOpacity
+                        style={styles.btnSignIn}
+                        onPress={() => navigation.navigate('Home')}
+                    >
+                        <Text style={styles.textSign}>Sign in</Text>
+                        <MaterialIcons
+                            name="navigate-next"
+                            color="#fff"
+                            size={20}
+                        />
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     )
@@ -43,11 +140,11 @@ export default function Login({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fdcb6e",
+        backgroundColor: "#1b262c",
     },
     header: {
         flex: 1,
-        backgroundColor: "#fdcb6e",
+        backgroundColor: "#1b262c",
         justifyContent: "center",
         padding: 20
         // alignItems:"center",
@@ -66,17 +163,19 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 20,
         padding: 20,
     },
-    inputEmail: {
-        height: 40,
-        width: "100%",
-        borderWidth: 1,
-        color:"#000",
-        
+    action: {
+        flexDirection: 'row',
+        marginTop: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#f2f2f2',
+        paddingBottom: 5,
+        backgroundColor: "#fff"
     },
-    inputPass: {
-        height: 40,
-        width: "100%",
-        borderWidth: 1,
+    input: {
+        flex: 1,
+        marginTop: -12,
+        paddingLeft: 10,
+        color: '#05375a',
     },
     formUserName: {
         backgroundColor: "#ccc",
@@ -86,16 +185,20 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: "#000"
     },
-    btnLogin: {
-        flexDirection:"row",
-        width: 140,
-        height: 40,
-        backgroundColor: "#e17055",
-        justifyContent: "center",
-        alignItems: "center"
+    button:{
+        alignItems: 'center',
+        marginTop: 50,
+        flexDirection:"column"
+    },  
+    btnSignIn: {
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        backgroundColor:"#1b262c"
     },
-    txtButton: {
+    textSign: {
         color: "#fff",
-        fontSize:16
+        fontSize: 18
     }
 })

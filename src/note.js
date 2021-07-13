@@ -65,6 +65,7 @@ alignSelf
   maxWidth
   minHeight
   minWidth
+  onChangeText
   opacity
   overflow
   overlayColor
@@ -83,6 +84,7 @@ alignSelf
   resizeMode
   right
   rotation
+  secureTextEntry
   scaleX
   scaleY
   shadowColor

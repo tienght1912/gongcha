@@ -18,7 +18,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 // import LinearGradient from 'react-native-linear-gradient';
 
-export default function Login({ navigation }) {
+export default function LoginScreen({ navigation }) {
     const [data, setdata] = React.useState({
         email: '',
         password: '',
@@ -55,7 +55,7 @@ export default function Login({ navigation }) {
     }
     return (
         <View style={styles.container}>
-            <StatusBar backgroundColor='#1b262c' barStyle="light-content" />
+            <StatusBar backgroundColor='#fdcb6e' barStyle="light-content" />
             <View style={styles.header}>
                 <ImageBackground
                     source={require('../assets/logo.png')}
@@ -156,12 +156,12 @@ export default function Login({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#1b262c",
+        backgroundColor: "#fdcb6e",
     },
     header: {
         flex: 1,
         flexDirection:"row",
-        backgroundColor: "#1b262c",
+        backgroundColor: "#fdcb6e",
         // justifyContent: "center",
         // alignItems:"center"
     },
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
         width: "100%",
         height: 50,
         borderRadius: 10,
-        backgroundColor:"#1b262c",
+        backgroundColor:"#fdcb6e",
         alignItems:"center",
         justifyContent:"center"
     },
@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
     },
     btnSignUp:{
         marginTop:15,
-        borderColor:"#1b262c",
+        borderColor:"#fdcb6e",
         borderWidth:1,
         borderRadius:10,
         width:"100%",
@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
         alignItems:"center"
     },
     textSignUp: {
-        color: "#1b262c",
+        color: "#fdcb6e",
         fontSize: 18,
         fontWeight: "bold"
     },

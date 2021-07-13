@@ -6,9 +6,11 @@ import {
     Image,
     FlatList,
     TouchableOpacity,
+    ImageBackground,
     StatusBar
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 const DATA = [
     {
         id: '2',
@@ -84,7 +86,7 @@ const DATA = [
     },
 
 ];
-export default function DetailScreen() {
+export default function DetailScreen({navigation}) {
     const renderItemV = ({ item }) => (
         <View
             // onPress={() => navigation.navigate('DetailScreen')}
@@ -93,23 +95,34 @@ export default function DetailScreen() {
                 style={styles.itemImage}
                 source={{ uri: item.imageP }}
             />
-            <Text style={styles.nameProduct}>{item.nameProduct}</Text>
-            <Text style={styles.cost}>{item.cost}{item.unit}</Text>
+            <Text style={styles.nameProducts}>{item.nameProduct}</Text>
+            <Text style={styles.costDetails}>{item.cost}{item.unit}</Text>
         </View>
     );
     return (
         <View style={styles.container}>
-            <StatusBar backgroundColor='#1b262c' barStyle="light-content" />
+            <StatusBar backgroundColor='#fdcb6e' barStyle="light-content" />
             <View style={styles.header}>
-                <Image
+                <ImageBackground
                     style={styles.imgDetail}
                     source={require('../assets/sp1.jpg')}
-                />
+                >
+                    <TouchableOpacity
+                        style={styles.btnBack}
+                        onPress={()=>navigation.goBack()}
+                        >
+                        <Ionicons
+                            name="chevron-back"
+                            size={30}
+                            color="#fff"
+                        />
+                    </TouchableOpacity>
+                </ImageBackground>
                 <View style={styles.box1}>
                     <Text style={styles.nameProduct}>Brown Jacket</Text>
                     <AntDesign
                         size={20}
-                        color="#fff"
+                        color="#000"
                         name="hearto"
                         style={styles.iconHeart}
                     />
@@ -142,7 +155,7 @@ export default function DetailScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#1b262c",
+        backgroundColor: "#fdcb6e",
     },
     header: {
         flex: 3,
@@ -153,47 +166,58 @@ const styles = StyleSheet.create({
         width: "100%",
         flex: 4
     },
+    btnBack:{
+        // backgroundColor:"#d3d4d5",
+        width:40,
+        height:40,
+        borderRadius:40,
+        alignItems:"center",
+        justifyContent:"center"
+    },
     box1: {
         // flex:1,
         // backgroundColor: "green",
         flexDirection: "row",
-        paddingHorizontal: 8,
+        paddingHorizontal: 4,
         justifyContent: "space-between",
         paddingTop: 4
     },
     nameProduct: {
-        color: "#fff",
-        fontSize: 18
+        color: "#000",
+        fontSize: 20,
+        paddingHorizontal: 12,
+        fontWeight:"700"
     },
     iconHeart: {
-        marginRight:10,
-        marginTop:4
+        marginRight: 10,
+        marginTop: 4
     },
-    costDetail:{
-        color:"red",
-        marginLeft:20,
-        marginTop:4
+    costDetail: {
+        color: "red",
+        marginLeft: 16,
+        marginTop: 4
     },
     Des: {
         // flex:1,
-        marginHorizontal: 20,
-        color: "#ccc",
-        marginTop:4
+        marginHorizontal: 16,
+        color: "#000",
+        marginTop: 4
     },
     box2: {
         // flex:1,
         flexDirection: "row",
-        paddingHorizontal: 20,
+        paddingHorizontal: 16,
         justifyContent: "space-between",
-        marginTop:4
+        marginTop: 4
     },
     textCount: {
-        color: "#fff",
+        color: "#000",
         alignSelf: "center",
         fontSize: 16
     },
     btnBuy: {
-        backgroundColor: "#d63031",
+        backgroundColor: "#000",
+        // #d63031
         width: 140,
         height: 40,
         borderRadius: 25,
@@ -208,15 +232,15 @@ const styles = StyleSheet.create({
     footer: {
         flex: 2
     },
-    titleFooter:{
-        color:"#fff",
-        fontSize:24,
-        marginHorizontal:20,
-        marginTop:4
+    titleFooter: {
+        color: "#000",
+        fontSize: 24,
+        fontWeight:"700",
+        marginHorizontal: 16,
+        marginTop: 4
     },
     flatListV: {
-        paddingHorizontal: 20,
-        marginTop:4
+        marginTop: 4
     },
     itemV: {
         flexDirection: "column",
@@ -230,17 +254,16 @@ const styles = StyleSheet.create({
         height: 180,
         alignSelf: "center"
     },
-    nameProduct: {
-        marginLeft: 12,
+    nameProducts: {
+        marginLeft: 20,
         marginTop: 4,
-        color: "#fff",
+        color: "#000",
         fontSize: 16,
         width: 120
     },
-    cost: {
-        marginLeft: 12,
+    costDetails: {
+        marginLeft: 20,
         marginTop: 4,
-        fontWeight: "700",
         color: "#ff0000"
     },
 })

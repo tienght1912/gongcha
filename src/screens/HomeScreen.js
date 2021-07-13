@@ -8,8 +8,10 @@ import {
     Image,
     StatusBar
 } from 'react-native';
-import Ionicons, { Button } from 'react-native-vector-icons/Ionicons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const DATA = [
     {
@@ -97,7 +99,7 @@ const DATA = [
 
 
 
-export default function Home({ navigation }) {
+export default function HomeScreen({ navigation }) {
     const renderItemV = ({ item }) => (
         <TouchableOpacity
             onPress={() => navigation.navigate('DetailScreen')}
@@ -112,20 +114,21 @@ export default function Home({ navigation }) {
     );
     return (
         <View style={styles.container}>
-            <StatusBar backgroundColor='#1b262c' barStyle="light-content" />
+            <StatusBar backgroundColor='#fdcb6e' barStyle="light-content" />
             <View style={styles.header}>
                 <View style={styles.logo}>
-                    <Ionicons
-                        name="shirt"
+                    <MaterialCommunityIcons
+                        name="shopping"
                         size={30}
                         color="#fff"
                     />
                 </View>
                 <View style={styles.drawer}>
-                    <Feather
-                        name="menu"
+                    <FontAwesome
+                        name="sign-out"
                         size={30}
                         color="#fff"
+                        onPress={()=>navigation.navigate('Login')}
                     />
                 </View>
             </View>
@@ -137,7 +140,7 @@ export default function Home({ navigation }) {
                     numColumns={2}
                 />
             </View>
-            <View style={styles.footer}>
+            {/* <View style={styles.footer}>
                 <Text style={styles.tilteFooter}>No more Product. You have reached the end</Text>
                 <View style={styles.button}>
                     <TouchableOpacity
@@ -153,7 +156,7 @@ export default function Home({ navigation }) {
                         <Text style={styles.textButton}>Sign In</Text>
                     </TouchableOpacity>
                 </View>
-            </View>
+            </View> */}
         </View>
     )
 }
@@ -163,14 +166,14 @@ const styles = StyleSheet.create({
         flex: 1,
         // justifyContent:"center",
         // alignItems:"center",
-        backgroundColor: "#1b262c",
+        backgroundColor: "#fdcb6e",
     },
     header: {
         height: 60,
         // backgroundColor:"#fff",
         flexDirection: "row",
         borderBottomWidth: 0.5,
-        borderColor: "#000",
+        borderColor: "#fab1a0",
         paddingHorizontal: 16,
         flex: 1
     },
@@ -191,9 +194,10 @@ const styles = StyleSheet.create({
         width: "100%",
         flex: 8,
         paddingTop: 4,
+        paddingBottom:4,
     },
     flatListV: {
-        paddingHorizontal: 16,
+        paddingHorizontal: 0,
     },
     itemV: {
         flexDirection: "column",
@@ -205,17 +209,17 @@ const styles = StyleSheet.create({
     itemImage: {
         width: 140,
         height: 180,
-        alignSelf: "center"
+        alignSelf: "center",
     },
     nameProduct: {
-        marginLeft: 12,
+        marginLeft: 20,
         marginTop: 4,
-        color: "#fff",
+        color: "#000",
         fontSize: 16,
         width: 120
     },
     cost: {
-        marginLeft: 12,
+        marginLeft: 20,
         marginTop: 4,
         fontWeight: "700",
         color: "#ff0000"
@@ -223,18 +227,18 @@ const styles = StyleSheet.create({
     footer: {
         flex: 1,
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
     },
     tilteFooter: {
         marginTop:4,
         color: "#900"
     },
-    button:{
-        flexDirection:"row",
-        width:"100%",
-        paddingHorizontal:16,
-        flex:1,
-    },
+    // button:{
+    //     flexDirection:"row",
+    //     width:"100%",
+    //     paddingHorizontal:16,
+    //     flex:1,
+    // },
     btnSignUp:{
         alignItems:"center",
         justifyContent:"center",

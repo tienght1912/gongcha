@@ -10,7 +10,12 @@ export default function Home({navigation}) {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
+                <View style={styles.logo}>
+                    
+                </View>
+                <View style={styles.drawer}>
 
+                </View>
             </View>
         </View>
     )

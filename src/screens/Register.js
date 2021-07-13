@@ -21,8 +21,10 @@ export default function Register({navigation}) {
     const [data, setdata] = React.useState({
         email: '',
         password: '',
+        confirm_password:'',
         check_textInputChange: false,
-        secureTextEntry: true
+        secureTextEntry: true,
+        confirm_secureTextEntry: true
     });
     const textInputChange = (val) => {
         if (val.trim().length >= 5) {
@@ -42,16 +44,29 @@ export default function Register({navigation}) {
     const handlePasswordChange = (val) => {
         setdata({
             ...data,
-            password: val,
+            password:val,
+        })
+    }
+    const handleConfirmPasswordChange = (val) => {
+        setdata({
+            ...data,
+            confirm_password: val,
         });
     }
-    const updatesecureTextEntry = () => {
+    const updateSecureTextEntry = () => {
         setdata({
             ...data,
             secureTextEntry: !data.secureTextEntry
 
         })
     }
+    const updateConfirmSecureTextEntry = () => {
+        setdata({
+            ...data,
+            confirm_secureTextEntry: !data.confirm_secureTextEntry
+
+        })
+    }    
     return (
         <View style={styles.container}>
             <StatusBar backgroundColor='#1b262c' barStyle="light-content" />
@@ -107,7 +122,7 @@ export default function Register({navigation}) {
                         autoCapitalize="none"
                     />
                     <TouchableOpacity
-                        onPress={updatesecureTextEntry}
+                        onPress={updateSecureTextEntry}
                     >
                         {data.secureTextEntry ?
                             <Feather
@@ -138,15 +153,15 @@ export default function Register({navigation}) {
                     <TextInput
                         placeholder="Confirm Password"
                         placeholderTextColor="#666666"
-                        secureTextEntry={!data.secureTextEntry ? false : true}
-                        onChangeText={(val) => handlePasswordChange(val)}
+                        secureTextEntry={!data.confirm_secureTextEntry ? false : true}
+                        onChangeText={(val) => handleConfirmPasswordChange(val)}
                         style={styles.input}
                         autoCapitalize="none"
                     />
                     <TouchableOpacity
-                        onPress={updatesecureTextEntry}
+                        onPress={updateConfirmSecureTextEntry}
                     >
-                        {data.secureTextEntry ?
+                        {data.confirm_secureTextEntry ?
                             <Feather
                                 name="eye-off"
                                 size={18}
@@ -165,18 +180,18 @@ export default function Register({navigation}) {
                 </View>
                 {/* confirm */}
                 <View style={styles.button}>
-                    {/* <TouchableOpacity
-                        style={styles.btnSignIn}
-                        onPress={() => navigation.navigate('Home')}
-                    >
-
-                        <Text style={styles.textSignIn}>Sign In</Text>
-                    </TouchableOpacity> */}
                     <TouchableOpacity
                         onPress={()=>navigation.navigate('Home')}
                         style={styles.btnSignUp}
                     >
                         <Text style={styles.textSignUp}>Sign Up</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.btnSignIn}
+                        onPress={() => navigation.goBack()}
+                    >
+
+                        <Text style={styles.textSignIn}>Sign In</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -242,7 +257,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 50,
     },
-    btnSignIn: {
+    btnSignUp: {
         width: "100%",
         height: 50,
         borderRadius: 10,
@@ -250,21 +265,22 @@ const styles = StyleSheet.create({
         alignItems:"center",
         justifyContent:"center"
     },
-    textSignIn: {
+    textSignUp: {
         color: "#fff",
         fontSize: 18,
         fontWeight: "bold"
     },
-    btnSignUp:{
+    btnSignIn:{
         borderColor:"#1b262c",
         borderWidth:1,
         borderRadius:10,
         width:"100%",
         height:50,
         justifyContent:"center",
-        alignItems:"center"
+        alignItems:"center",
+        marginTop:15
     },
-    textSignUp: {
+    textSignIn: {
         color: "#1b262c",
         fontSize: 18,
         fontWeight: "bold"

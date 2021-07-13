@@ -2,17 +2,24 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+// import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import HomeScreen from './src/screens/Home';
 import LoginScreen from './src/screens/Login';
 import RegisterScreen from './src/screens/Register';
 import DetailScreen from './src/screens/DetailScreen';
+import Shopping from './src/screens/Shopping';
+import BottomTabs from './src/BottomTabs';
 
 const Stack = createStackNavigator();
+
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator headerMode='none'>
-
+        <Stack.Screen
+          name="BottomTabs"
+          component={BottomTabs}
+        />
         <Stack.Screen
           name="Home"
           component={HomeScreen}
@@ -33,6 +40,11 @@ export default function App() {
           component={DetailScreen}
         // options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="Shopping"
+          component={Shopping}
+        />
+
 
       </Stack.Navigator>
     </NavigationContainer>

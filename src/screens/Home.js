@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         borderBottomWidth: 0.5,
         borderColor: "#000",
-        paddingHorizontal: 20,
+        paddingHorizontal: 16,
         flex: 1
     },
     logo: {
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
         paddingTop: 4,
     },
     flatListV: {
-        paddingHorizontal: 20,
+        paddingHorizontal: 16,
     },
     itemV: {
         flexDirection: "column",
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
     button:{
         flexDirection:"row",
         width:"100%",
-        paddingHorizontal:20,
+        paddingHorizontal:16,
         flex:1,
     },
     btnSignUp:{

@@ -72,11 +72,11 @@ export default function Register({navigation}) {
             <StatusBar backgroundColor='#1b262c' barStyle="light-content" />
             <View style={styles.header}>
                 <ImageBackground
-                    source={require('../assets/banner2.png')}
+                    source={require('../assets/logo.png')}
                     style={styles.banner}
                 >
-                    <Text style={[styles.titleHeader,{marginTop:80}]}>Create</Text>
-                    <Text style={styles.titleHeader}>your account!</Text>
+                    <Text style={[styles.titleHeader,{marginTop:30, marginLeft:40}]}>Create</Text>
+                    <Text style={[styles.titleHeader,{marginLeft:230, marginTop:-30}]}>your account!</Text>
                 </ImageBackground>
             </View>
             <View style={styles.footer}>
@@ -221,6 +221,7 @@ const styles = StyleSheet.create({
         width:"100%",
         height:"100%",
         flex:1,
+        marginLeft:-20
     },
     footer: {
         flex: 2,

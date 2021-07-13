@@ -3,20 +3,20 @@ import {
     StyleSheet,
     Text,
     View,
-    Platform,
+    // Platform,
     TouchableOpacity,
     TextInput,
     StatusBar,
-    Alert,
-    Image,
+    // Alert,
+    // Image,
     ImageBackground 
 } from 'react-native';
 // import Home from './Home';
-import * as Animatable from 'react-native-animatable';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+// import * as Animatable from 'react-native-animatable';
+// import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
-import LinearGradient from 'react-native-linear-gradient';
+// import LinearGradient from 'react-native-linear-gradient';
 
 export default function Login({ navigation }) {
     const [data, setdata] = React.useState({
@@ -58,7 +58,7 @@ export default function Login({ navigation }) {
             <StatusBar backgroundColor='#1b262c' barStyle="light-content" />
             <View style={styles.header}>
                 <ImageBackground
-                    source={require('../assets/banner.png')}
+                    source={require('../assets/logo.png')}
                     style={styles.banner}
                 >
                     <Text style={styles.titleHeader}>Welcome!</Text>
@@ -169,6 +169,7 @@ const styles = StyleSheet.create({
         width:"100%",
         height:"100%",
         flex:2,
+        marginLeft:50,
     },
     titleHeader: {
         color: "#fff",
@@ -176,7 +177,7 @@ const styles = StyleSheet.create({
         fontWeight: "700",
         flex:1,
         marginTop:80,
-        marginLeft:20,
+        marginLeft:-30,
     },
     footer: {
         flex: 2,

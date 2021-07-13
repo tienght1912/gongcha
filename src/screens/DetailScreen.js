@@ -1,25 +1,15 @@
-import React from 'react';
+import React from 'react'
 import {
     StyleSheet,
     Text,
     View,
-    TouchableOpacity,
-    FlatList,
     Image,
+    FlatList,
+    TouchableOpacity,
     StatusBar
 } from 'react-native';
-import Ionicons, { Button } from 'react-native-vector-icons/Ionicons';
-import Feather from 'react-native-vector-icons/Feather';
-
+import AntDesign from 'react-native-vector-icons/AntDesign';
 const DATA = [
-    {
-        id: '1',
-        nameProduct: 'Long Sleeves Polka Dots',
-        imageP: 'https://res.cloudinary.com/djlbfjouc/image/upload/v1581158167/sbiuoziiqi5gkuvrsymv.jpg',
-        cost: 900,
-        unit: "$",
-        description: 'Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.'
-    },
     {
         id: '2',
         nameProduct: 'Brown Jacket',
@@ -94,13 +84,10 @@ const DATA = [
     },
 
 ];
-
-
-
-export default function Home({ navigation }) {
+export default function DetailScreen() {
     const renderItemV = ({ item }) => (
-        <TouchableOpacity
-            onPress={() => navigation.navigate('DetailScreen')}
+        <View
+            // onPress={() => navigation.navigate('DetailScreen')}
             style={styles.itemV}>
             <Image
                 style={styles.itemImage}
@@ -108,51 +95,45 @@ export default function Home({ navigation }) {
             />
             <Text style={styles.nameProduct}>{item.nameProduct}</Text>
             <Text style={styles.cost}>{item.cost}{item.unit}</Text>
-        </TouchableOpacity>
+        </View>
     );
     return (
         <View style={styles.container}>
             <StatusBar backgroundColor='#1b262c' barStyle="light-content" />
             <View style={styles.header}>
-                <View style={styles.logo}>
-                    <Ionicons
-                        name="shirt"
-                        size={30}
+                <Image
+                    style={styles.imgDetail}
+                    source={require('../assets/sp1.jpg')}
+                />
+                <View style={styles.box1}>
+                    <Text style={styles.nameProduct}>Brown Jacket</Text>
+                    <AntDesign
+                        size={20}
                         color="#fff"
+                        name="hearto"
+                        style={styles.iconHeart}
                     />
                 </View>
-                <View style={styles.drawer}>
-                    <Feather
-                        name="menu"
-                        size={30}
-                        color="#fff"
-                    />
+                <Text style={styles.costDetail}>900$</Text>
+                <Text style={styles.Des}>Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.</Text>
+                <View style={styles.box2}>
+                    <Text style={styles.textCount}>Count</Text>
+                    <TouchableOpacity
+                        style={styles.btnBuy}
+                    >
+                        <Text style={styles.textBuy}>Add to cart</Text>
+                    </TouchableOpacity>
                 </View>
+
             </View>
-            <View style={styles.content}>
+            <View style={styles.footer}>
+                <Text style={styles.titleFooter}>Related Products</Text>
                 <FlatList
                     style={styles.flatListV}
                     data={DATA}
                     renderItem={renderItemV}
                     numColumns={2}
                 />
-            </View>
-            <View style={styles.footer}>
-                <Text style={styles.tilteFooter}>No more Product. You have reached the end</Text>
-                <View style={styles.button}>
-                    <TouchableOpacity
-                        style={styles.btnSignUp}
-                        onPress={() => navigation.navigate('Register')}
-                    >
-                        <Text style={styles.textButton}>Sign Up</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={styles.btnSignIn}
-                        onPress={() => navigation.navigate('Login')}
-                    >
-                        <Text style={styles.textButton}>Sign In</Text>
-                    </TouchableOpacity>
-                </View>
             </View>
         </View>
     )
@@ -161,39 +142,81 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // justifyContent:"center",
-        // alignItems:"center",
         backgroundColor: "#1b262c",
     },
     header: {
-        height: 60,
-        // backgroundColor:"#fff",
-        flexDirection: "row",
-        borderBottomWidth: 0.5,
-        borderColor: "#000",
-        paddingHorizontal: 20,
-        flex: 1
+        flex: 3,
+        // backgroundColor:"#900" 
     },
-    logo: {
-        flex: 1,
-        alignItems: "flex-start",
+    imgDetail: {
+        height: "100%",
+        width: "100%",
+        flex: 4
+    },
+    box1: {
+        // flex:1,
+        // backgroundColor: "green",
+        flexDirection: "row",
+        paddingHorizontal: 8,
+        justifyContent: "space-between",
+        paddingTop: 4
+    },
+    nameProduct: {
+        color: "#fff",
+        fontSize: 18
+    },
+    iconHeart: {
+        marginRight:10,
+        marginTop:4
+    },
+    costDetail:{
+        color:"red",
+        marginLeft:20,
+        marginTop:4
+    },
+    Des: {
+        // flex:1,
+        marginHorizontal: 20,
+        color: "#ccc",
+        marginTop:4
+    },
+    box2: {
+        // flex:1,
+        flexDirection: "row",
+        paddingHorizontal: 20,
+        justifyContent: "space-between",
+        marginTop:4
+    },
+    textCount: {
+        color: "#fff",
+        alignSelf: "center",
+        fontSize: 16
+    },
+    btnBuy: {
+        backgroundColor: "#d63031",
+        width: 140,
+        height: 40,
+        borderRadius: 25,
+        alignItems: "center",
         justifyContent: "center"
     },
-    logoImage: {
-
+    textBuy: {
+        color: "#fff",
+        fontSize: 16,
+        fontWeight: "700",
     },
-    drawer: {
-        flex: 5,
-        alignItems: "flex-end",
-        justifyContent: "center",
+    footer: {
+        flex: 2
     },
-    content: {
-        width: "100%",
-        flex: 8,
-        paddingTop: 4,
+    titleFooter:{
+        color:"#fff",
+        fontSize:24,
+        marginHorizontal:20,
+        marginTop:4
     },
     flatListV: {
         paddingHorizontal: 20,
+        marginTop:4
     },
     itemV: {
         flexDirection: "column",
@@ -220,33 +243,4 @@ const styles = StyleSheet.create({
         fontWeight: "700",
         color: "#ff0000"
     },
-    footer: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
-    },
-    tilteFooter: {
-        marginTop:4,
-        color: "#900"
-    },
-    button:{
-        flexDirection:"row",
-        width:"100%",
-        paddingHorizontal:20,
-        flex:1,
-    },
-    btnSignUp:{
-        alignItems:"center",
-        justifyContent:"center",
-        flex:1
-    },
-    btnSignIn:{
-        alignItems:"center",
-        justifyContent:"center",
-        flex:1
-    },
-    textButton:{
-        color:"#fff",
-        fontSize:16,
-    }
 })

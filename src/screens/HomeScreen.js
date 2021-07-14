@@ -128,7 +128,7 @@ export default function HomeScreen({ navigation }) {
                         name="sign-out"
                         size={30}
                         color="#fff"
-                        onPress={()=>navigation.navigate('Login')}
+                        onPress={()=>navigation.navigate('LoginScreen')}
                     />
                 </View>
             </View>
